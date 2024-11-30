@@ -130,6 +130,9 @@ delete from "SKILL" where id = '4853017b-b684-49f1-8b87-9173fd9f3e65';
     -- 6. 最大授課人數`max_participants` 設定為10
     -- 7. 授課連結設定`meeting_url`為 https://test-meeting.test.io
 
+insert into "COURSE" (user_id, skill_id, "name" , start_at, end_at, max_participants, meeting_url) values
+((select id from "USER" where email = 'lee2000@hexschooltest.io'), 'f483d6a4-aaca-4cba-a2f2-eedf88a58e53', '重訓基礎課', '2024-11-25 14:00:00', '2024-11-25 16:00:00', 10, 'https://test-meeting.test.io');
+
 
 -- ████████  █████   █    █████ 
 --   █ █   ██    █  █     █     
