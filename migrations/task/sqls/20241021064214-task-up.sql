@@ -88,13 +88,14 @@ insert into "COACH" (user_id, experience_years) values
     -- 1. 所有教練都有 `重訓` 專長
     -- 2. 教練`肌肉棒子` 需要有 `瑜伽` 專長
     -- 3. 教練`Q太郎` 需要有 `有氧運動` 與 `復健訓練` 專長
+
 insert into "COACH_LINK_SKILL" (coach_id, skill_id) values
-('6e3d0ad0-c11d-4dfe-b607-fe91dfcc3a50', 'f483d6a4-aaca-4cba-a2f2-eedf88a58e53'),
-('ac9e051c-64ea-48bc-8ac2-8290e56a0cfa', 'f483d6a4-aaca-4cba-a2f2-eedf88a58e53'),
-('0efbc04f-890a-4044-b083-971bc8cef4d9', 'f483d6a4-aaca-4cba-a2f2-eedf88a58e53'),
-('ac9e051c-64ea-48bc-8ac2-8290e56a0cfa', '43e1e68a-cc5b-4825-b481-f257429295f9'),
-('0efbc04f-890a-4044-b083-971bc8cef4d9','093a2000-581c-471b-822f-f1750ba0db3f'),
-('0efbc04f-890a-4044-b083-971bc8cef4d9','6cda78e4-5435-461d-b8a7-2b6e13797c2a');
+((select id from "COACH" where user_id = '6907f25b-e77d-4aae-9ff0-ce0b548e094d'), (select id from "SKILL" where name = '重訓')),
+((select id from "COACH" where user_id = '8fae9336-8287-47c2-b9f5-b4b3e9c830f4'), (select id from "SKILL" where name = '重訓')),
+((select id from "COACH" where user_id = 'b3b0deaa-e25d-4349-bd68-0ed956b32529'), (select id from "SKILL" where name = '重訓')),
+((select id from "COACH" where user_id = '8fae9336-8287-47c2-b9f5-b4b3e9c830f4'), (select id from "SKILL" where name = '瑜伽')),
+((select id from "COACH" where user_id = 'b3b0deaa-e25d-4349-bd68-0ed956b32529'),(select id from "SKILL" where name = '有氧運動')),
+((select id from "COACH" where user_id = 'b3b0deaa-e25d-4349-bd68-0ed956b32529'),(select id from "SKILL" where name = '復健訓練'));
 
 -- 3-3 修改：更新教練的經驗年數，資料需求如下：
     -- 1. 教練`肌肉棒子` 的經驗年數為3年
