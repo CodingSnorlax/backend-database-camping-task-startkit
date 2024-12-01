@@ -165,13 +165,22 @@ insert into "COURSE_BOOKING" (course_id, user_id, booking_at, status) values
 -- 5-2. 修改：`王小明`取消預約 `李燕容` 的課程，請在`COURSE_BOOKING`更新該筆預約資料：
     -- 1. 取消預約時間`cancelled_at` 設為2024-11-24 17:00:00
     -- 2. 狀態`status` 設定為課程已取消
+update "COURSE_BOOKING"
+set cancelled_at = '2024-11-24 17:00:00', status = '課程已取消'
+where user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io');
+
 
 -- 5-3. 新增：`王小明`再次預約 `李燕容`   的課程，請在`COURSE_BOOKING`新增一筆資料：
     -- 1. 預約人設為`王小明`
     -- 2. 預約時間`booking_at` 設為2024-11-24 17:10:25
     -- 3. 狀態`status` 設定為即將授課
+insert into "COURSE_BOOKING" (course_id, user_id, booking_at, status) values
+((select id from "COURSE" where user_id = (select id from "USER" where email = 'lee2000@hexschooltest.io')), (select id from "USER" where email = 'wXlTq@hexschooltest.io'), '2024-11-24 17:10:25', '即將授課');
+
 
 -- 5-4. 查詢：取得王小明所有的預約紀錄，包含取消預約的紀錄
+select * from "COURSE_BOOKING"
+where user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io');
 
 -- 5-5. 修改：`王小明` 現在已經加入直播室了，請在`COURSE_BOOKING`更新該筆預約資料（請注意，不要更新到已經取消的紀錄）：
     -- 1. 請在該筆預約記錄他的加入直播室時間 `join_at` 設為2024-11-25 14:01:59
