@@ -106,11 +106,11 @@ insert into "COACH_LINK_SKILL" (coach_id, skill_id) values
     -- 2. 教練`Q太郎` 的經驗年數為5年
 update "COACH" 
 set experience_years = 3
-where user_id = '8fae9336-8287-47c2-b9f5-b4b3e9c830f4';
+where user_id = (select id from "USER" where email = 'muscle@hexschooltest.io');
 
 update "COACH" 
 set experience_years = 5
-where user_id = 'b3b0deaa-e25d-4349-bd68-0ed956b32529';
+where user_id = (select id from "USER" where email = 'starplatinum@hexschooltest.io');
 
 
 -- 3-4 刪除：新增一個專長 空中瑜伽 至 SKILL 資料表，之後刪除此專長。
