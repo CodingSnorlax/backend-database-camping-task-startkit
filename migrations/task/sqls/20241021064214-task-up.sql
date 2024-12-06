@@ -275,4 +275,4 @@ where purchase_at >= '2024-11-01 00:00:00' and purchase_at < '2024-12-01 00:00:0
 -- 顯示須包含以下欄位： 預約會員人數
 select count(distinct user_id) as 預約會員人數 
 from "COURSE_BOOKING"
-where status != '課程已取消' and booking_at >= '2024-11-01 00:00:00' and booking_at < '2024-12-01 00:00:00'; 
+where status != '課程已取消' and created_at >= '2024-12-01 00:00:00' and created_at < '2025-01-01 00:00:00'; 
